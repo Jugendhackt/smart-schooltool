@@ -1,0 +1,167 @@
+.demo-card-image {
+    float:left;
+   margin: 5px;
+   padding:0px;
+}
+
+.mdl-card__title {
+    margin: 0px;
+   padding: 0px;
+}
+
+
+
+.cards  {
+display: table-cell;
+text-align: center;
+vertical-align: middle;
+margin: 0;
+}
+.float-left{
+    float:left;
+}
+.float-right{
+    float:right;
+}
+.clear{
+    clear:both;
+}
+.großerText{
+    font-size: xx-large;
+    padding: 20px;
+}
+.großerText li{
+    font-size: xx-large;
+    padding: 10px;
+}
+.login{
+    padding: 20px;
+}
+.nachrichtx {
+    float: right;
+    border: 1px solid;
+    margin: 2px;
+    max-width: 80%;
+}
+.nachricht-container {
+    display: flex;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* Nachrichten Flex layout */
+.nachricht {
+    width: 90%;
+    height: 100%;
+    display: flex;  
+    border: 1px solid;
+    margin: 2px;
+    align-items: stretch;
+    flex-flow: row wrap;
+
+    text-align: center;
+}
+
+.eigene-nachricht {
+    justify-content: flex-end
+
+}
+.eigene-nachricht div.nachricht-absender{
+    visibility: hidden;
+}
+.andere-nachricht {
+    justify-content: flex-start
+}
+
+.nachricht > * {
+    padding: 10px;
+    flex: 1 100%;
+}
+
+.nachricht-zeitstempel {
+/*    background: tomato; */
+    color:black;
+}
+
+.nachricht-empfaenger {
+    background: lightgreen;
+}
+
+.nachricht-text {
+    flex-grow: 100;
+    text-align: left;
+    background: rgb(105, 238, 255);
+}
+
+.nachricht-info {
+    width: 30px;
+    flex-basis:30px;
+    font-weight: bold;
+}
+
+.nachricht-absender {
+   /* background: gold;*/
+}
+
+.nachricht-empfaenger {
+    background: lightgreen;
+}
+.nachricht-zusatz {
+    background: rgb(105, 238, 255);
+
+    /* deaktiviert*/
+    display: none;
+}
+
+@media all and (min-width: 600px) {
+    .nachricht-info { flex: 1 0 0; }
+}
+
+@media all and (min-width: 800px) {
+    /**/
+    .nachricht-text { flex: 3 0px; }
+    .eigene-nachricht .nachricht-absender { order: 3; } 
+    .andere-nachricht .nachricht-absender { order: 1; } 
+    .nachricht-text { order: 2; }
+    .eigene-nachricht .nachricht-empfaenger { order: 1; } 
+    .andere-nachricht .nachricht-empfaenger { order: 3; } 
+    .nachricht-zusatz  { order: 4; }
+}
+
+.lesen {
+    border-width: 1px;
+    border-color: black;
+    padding: 10px;
+}
+.schreiben {
+    padding: 10px;
+}
+.statusmeldung {
+    width: 100%;
+    min-height: 30px;
+    display:flex;
+    align-items:center;
+    padding: 5px;
+}
+
+.statusfehler {
+    background-color: indianred;
+}
+
+.statusok {
+}
+
+.spacer {
+    width: 100%;
+    min-height: 10px;
+    border-top-color: black;
+    border-top-style: solid;
+    border-top-width: 1px;
+}
+
+.senden-text {
+    width: 100%;
+    padding: 10px;
+}

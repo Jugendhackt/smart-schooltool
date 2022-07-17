@@ -1,0 +1,26 @@
+{
+    "Anonym" : { 
+        "freunde":[] 
+    },
+    "Marianne" : {
+        "freunde": [ "Ina", "Klaus" ]
+    },
+    "Klaus" : {
+        "freunde": [ "Peter", "Marianne" ]
+    },
+    "Ina" : {
+        "freunde": [ "Peter", "Marianne" ]
+    },
+    "Peter" : {
+        "freunde": [ "Ina", "Marianne" ]
+    },
+    "Frau Müller" : {
+        "freunde": [ "Ina", "Marianne" ]
+    },
+    "Herr Reinhard" : {
+        "freunde": [ "Ina", "Marianne" ]
+    },
+    "Frau Nübel" : {
+        "freunde": [ "Ina", "Marianne" ]
+    }
+}

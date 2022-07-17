@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Eine Webapp für Schüler und Lehrer.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>smart-schooltool</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  
+</head>
+  <body class="about">
+    <!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">smart-schooltool</span>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Menü</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="smartSchooltool.html">Home</a>
+        <a class="mdl-navigation__link" href="heft.html">Hefte</a>
+        <a class="mdl-navigation__link" href="buch.html">Bücher</a>
+        <a class="mdl-navigation__link" href="Arbeitsheft.html">Arbeitshefte</a>
+        <a class="mdl-navigation__link" href="chat.html">Chats</a>
+        <a class="mdl-navigation__link" href="bildquellen.html">Bildquellen</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="inhalt">
+        <div class="profil" style="visibility: hidden;">Angemeldet als &nbsp;<span id="benutzer-name" class="benutzer-name">niemand</span>
+            <select id="anmelden-benutzer" name="benutzer" type="search" placeholder="Absender" aria-label="Absender" value="" onchange="anmeldeFormularSenden(event)">
+            </select>
+            <input id="auto-aktualisieren" type="checkbox" onClick="autoAktualisierenUmschalten(event)" value="aktiv"><label for="auto-aktualisieren">Nachrichten automatisch abrufen</label>
+        </div>
+        <div class="spacer"></div>
+        <div id="statusmeldung" class="statusmeldung" style="visibility: hidden;">&nbsp;</div>
+        <div class="spacer"></div>
+        <div id="schreiben" class="schreiben">
+            <h2>Nachricht schreiben</h2>
+            <form id="senden" onsubmit="nachrichtFormularSenden(event)">
+                <select class="senden-empfaenger" id="senden-empfaenger" name="an" type="search" placeholder="Empfänger" aria-label="An Benutzer" value="">
+                </select>
+                <button type="submit" aria-label="Senden"><i class="fa fa-paper-plane" aria-hidden="true"></i> Senden</button>
+                <textarea class="senden-text" id="senden-text" name="nachricht" placeholder="Nachricht schreiben..." aria-label="Nachricht" rows="5"></textarea>
+            </form>
+        </div>
+        <div class="spacer"></div>
+        <div id="nachrichten" class="lesen">
+            <h2>Nachrichten</h2>
+            <form id="abrufen" method="POST">
+                <button type="submit" aria-label="Neue abrufen" onclick="nachrichtenAbrufen(event)">Neue abrufen</button>
+                <button type="submit" aria-label="Alle abrufen" onclick="nachrichtenAbrufenAlle(event)">Alle abrufen</button>
+                <button type="submit" aria-label="Liste löschen" onclick="nachrichtenLoeschen(event)">Liste löschen</button>
+            </form>
+            <div id="nachrichten-liste">
+                <!-- Platzhalter für Liste der empfangenen Nachrichten -->
+                <div id="nachrichtenmuster" class="nachricht-container" style="visibility: hidden;">
+                    <div class="nachricht">
+                        <div class="nachricht-zeitstempel"><i class="fa fa-clock-o" title="Datum"></i> <span id="zeitstempel">Zeitstempel</span></div>
+                        <div class="nachricht-absender nachricht-info"><i class="fa fa-user-circle" title="Absender"></i> <span id="von">Absender</span></div>
+                        <div class="nachricht-text"><span id="nachricht">Nachricht</span></div>
+                        <div class="nachricht-empfaenger nachricht-info"><i class="fa fa-user-circle" title="Empfänger"></i> <span id="an">Empfänger</span></div>
+                        <div class="nachricht-zusatz"><span id="zusatz">Zusatz</span></div>
+                    </div>
+                </div>
+                <div id="nachrichtenmuster" class="nachricht-container" style="visibility: hidden;">
+                    <div class="nachricht">
+                        <div class="nachricht-zeitstempel"><i class="fa fa-clock-o" title="Datum"></i> <span id="zeitstempel">Zeitstempel</span></div>
+                        <div class="nachricht-absender nachricht-info"><i class="fa fa-user-circle" title="Absender"></i> <span id="von">Absender</span></div>
+                        <div class="nachricht-text"><span id="nachricht">Nachricht</span></div>
+                        <div class="nachricht-empfaenger nachricht-info"><i class="fa fa-user-circle" title="Empfänger"></i> <span id="an">Empfänger</span></div>
+                        <div class="nachricht-zusatz"><span id="zusatz">Zusatz</span></div>
+                    </div>
+                </div>
+                <div id="nachrichtenmuster" class="nachricht-container" style="visibility: hidden;">
+                    <div class="nachricht">
+                        <div class="nachricht-zeitstempel"><i class="fa fa-clock-o" title="Datum"></i> <span id="zeitstempel">Zeitstempel</span></div>
+                        <div class="nachricht-absender nachricht-info"><i class="fa fa-user-circle" title="Absender"></i> <span id="von">Absender</span></div>
+                        <div class="nachricht-text"><span id="nachricht">Nachricht</span></div>
+                        <div class="nachricht-empfaenger nachricht-info"><i class="fa fa-user-circle" title="Empfänger"></i> <span id="an">Empfänger</span></div>
+                        <div class="nachricht-zusatz"><span id="zusatz">Zusatz</span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Muster für empfangene Nachrichten -->
+            <div id="nachrichtenmuster" class="nachricht-container" style="visibility: hidden;">
+                <div class="nachricht">
+                    <div class="nachricht-zeitstempel"><i class="fa fa-clock-o" title="Datum"></i> <span id="zeitstempel">Zeitstempel</span></div>
+                    <div class="nachricht-absender nachricht-info"><i class="fa fa-user-circle" title="Absender"></i> <span id="von">Absender</span></div>
+                    <div class="nachricht-text"><span id="nachricht">Nachricht</span></div>
+                    <div class="nachricht-empfaenger nachricht-info"><i class="fa fa-user-circle" title="Empfänger"></i> <span id="an">Empfänger</span></div>
+                    <div class="nachricht-zusatz"><span id="zusatz">Zusatz</span></div>
+                </div>
+                <div class="nachricht-trenner"></div>
+            </div>
+        </div>
+    </div>
+    </main>
+  </div>
+  <script src="js/index.js"></script>
+  <script>
+    anmeldenAls("Klaus");
+    autoAktualisierenAktivieren(true);
+  </script>
+</body>
+</html>
